@@ -1,10 +1,12 @@
 import { useRef, useState, useEffect } from 'react'
 import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import axios from '../api/axios';
 import './register.css'
 
 const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{2,23}$/
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/
+const REG_URL = '/register';
 
 const Register = () => {
 
@@ -52,11 +54,40 @@ const handleSubmit = async(e) => {
     setErrMsg("Inavlid Entry");
     return;
   }
-  console.log(user, pwd);
-  setSuccess(true);
+  try {
+    const response = await axios.post(REG_URL, 
+      JSON.stringify({ user, pwd }),
+      {
+        headers: { 'Content-Type':'application/json' },
+        withCredentials: true,
+      }
+    );
+      console.log(response.data);
+      console.log(response.accessToken);
+      console.log(JSON.stringify(response));
+      setSuccess(true)
+  } catch(err){
+    if(!err?.response) {
+      setErrMsg('No Server Responseponse')
+    }else if(err.response?.status === 409){
+      setErrMsg('Username Taken')
+    }else {
+      setErrMsg('Registration Failed')
+    }
+    errRef.current.focus();
+  }
 }
 
   return (
+    <>
+    {success ? (
+      <div className='main_container'>
+        <h1>Success!</h1>
+        <p>
+          <a href="#">Sign In</a>
+        </p>
+      </div>
+    ) : (
     <div className='main_container'>
        <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
       <h1 className='head'>Register</h1>
@@ -86,7 +117,7 @@ const handleSubmit = async(e) => {
           <FontAwesomeIcon icon={faInfoCircle} />
           4 to 24 characters.<br />
           Must begin with a letter.<br />
-          Letters, numbers, underscores, hyphens allowed.
+          Letters, numbers, underscoresponse, hyphens allowed.
         </p>
 
         <label htmlFor='password'>
@@ -151,6 +182,8 @@ const handleSubmit = async(e) => {
         </span>
       </p>
     </div>
+    )}
+    </>
   )
 }
 
