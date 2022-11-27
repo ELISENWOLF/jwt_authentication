@@ -3,13 +3,10 @@
 .main_container{
     text-align: center;
     color: #fff;
-    padding: 2rem;
+    padding: 1rem;
     width: 100%;
     max-width: 420px;
     min-height: 400px;
-    position: relative;
-    left: 35%;
-    margin-top: 2rem;
     background-color: rgba(104, 153, 159, 0.692);
     border: 1px solid transparent;
     border-radius: 25px;
@@ -42,17 +39,15 @@ input[type="text"],
 input[type="password"],
 button,
 textarea {
-  font-family: 'Poppins', sans-serif;
-  font-size: 18px;
-  border: 1px solid rgba(0, 0, 0, 0.4);
-  box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.2);
+  font-family: 'Nunito', sans-serif;
+  font-size: 22px;
   padding: 0.25rem;
   border-radius: 0.5rem;
+  border: none;
 }
 
 label,
 button {
-  font-family: 'Poppins', sans-serif;
   margin-top: 1rem;
 }
 
@@ -61,7 +56,6 @@ button {
 }
 
 .instructions {
-    font-family: 'Poppins', sans-serif;
     font-size: 0.75rem;
     border-radius: 0.5rem;
     background: #000;
@@ -76,7 +70,8 @@ button {
 }
 
 .offscreen {
-    display: none;
+    position: absolute;
+    left: -9999px;
 }
 
 .hide {
@@ -94,7 +89,6 @@ button {
 }
 
 .errmsg {
-    font-family: 'Poppins', sans-serif;
     background-color: lightpink;
     color: firebrick;
     font-weight: bold;

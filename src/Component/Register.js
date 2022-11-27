@@ -6,7 +6,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "../api/axios";
-import "../../main.css";
+import "./main.css";
 import { Link } from "react-router-dom";
 
 const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{2,23}$/;
@@ -213,7 +213,7 @@ const Register = () => {
             Already registered?
             <br />
             <span className="line">
-              <Link to="/signin">Sign in</Link>
+              <Link to="/login">Sign in</Link>
             </span>
           </p>
         </div>

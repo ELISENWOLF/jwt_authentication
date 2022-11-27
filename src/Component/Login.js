@@ -1,20 +1,24 @@
-import { useRef, useState, useEffect, useContext } from "react";
-import AuthContext from "../Context/AuthProvider";
+import { useRef, useState, useEffect } from "react";
+import useAuth from "../Hooks/useAuth";
 import axios from "../api/axios";
-import "../../main.css";
-import { Link } from "react-router-dom";
+import "./main.css";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const LOGIN_URL = "/auth";
 
-const Signin = () => {
-  const { setAuth } = useContext(AuthContext);
+const Login = () => {
+  const { setAuth } = useAuth();
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || '/';
+
   const userRef = useRef();
   const errRef = useRef();
 
   const [user, setUser] = useState("");
   const [pwd, setPwd] = useState("");
   const [errMsg, setErrMsg] = useState("");
-  const [success, setSuccess] = useState(false);
 
   useEffect(() => {
     userRef.current.focus();
@@ -39,7 +43,7 @@ const Signin = () => {
       setAuth({ user, pwd, roles, accessToken });
       setUser("");
       setPwd("");
-      setSuccess(true);
+      navigate(from, { replace: true });
     } catch (err) {
       if(!err?.response) {
         setErrMsg('No Server Response');
@@ -55,12 +59,6 @@ const Signin = () => {
   };
 
   return (
-    <>
-      {success ? (
-        <div className="main_container">
-          <h1>Login Successfull</h1>
-        </div>
-      ) : (
         <div className="main_container">
           <p
             ref={errRef}
@@ -96,13 +94,11 @@ const Signin = () => {
             Need an Account?
             <br />
             <span className="line">
-              <Link to="/">Sign Up</Link>
+              <Link to="/register">Sign Up</Link>
             </span>
           </p>
         </div>
-      )}
-    </>
   );
 };
 
-export default Signin;
+export default Login;
