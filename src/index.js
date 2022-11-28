@@ -1,11 +1,10 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom'
 import App from './App';
 import { AuthProvider } from './Component/Context/AuthProvider';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+ReactDOM.render(
   <React.StrictMode>
     <Router>
       <AuthProvider>
@@ -14,6 +13,7 @@ root.render(
         </Routes>
       </AuthProvider>
     </Router>
-  </React.StrictMode>
+  </React.StrictMode>,
+   document.getElementById('root')
 );
 
