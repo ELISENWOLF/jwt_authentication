@@ -1,45 +1,46 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&family=Source+Sans+Pro&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&family=Source+Sans+Pro&display=swap");
 
-.main_container{
-    text-align: center;
-    color: #fff;
-    padding: 1rem;
-    width: 100%;
-    max-width: 420px;
-    min-height: 400px;
-    background-color: rgba(104, 153, 159, 0.692);
-    border: 1px solid transparent;
-    border-radius: 25px;
-    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
-    font-family: 'Poppins', sans-serif;
+.main_container {
+  text-align: center;
+  color: #fff;
+  padding: 1rem;
+  width: 100%;
+  max-width: 420px;
+  min-height: 400px;
+  background-color: rgba(104, 153, 159, 0.692);
+  border: 1px solid transparent;
+  border-radius: 25px;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+  font-family: "Poppins", sans-serif;
 }
 
-.main_container:hover{
-    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.87);
+.main_container:hover {
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.87);
 }
 
-.head{
-    font-family: 'Poppins', sans-serif;
-    font-weight: 700;
+.head {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
 }
 
 form {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    flex-grow: 1;
-    padding-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  flex-grow: 1;
+  padding-bottom: 1rem;
 }
 
-a, a:visited {
-    color: #fff;
+a,
+a:visited {
+  color: #fff;
 }
 
 input[type="text"],
 input[type="password"],
 button,
 textarea {
-  font-family: 'Nunito', sans-serif;
+  font-family: "Nunito", sans-serif;
   font-size: 22px;
   padding: 0.25rem;
   border-radius: 0.5rem;
@@ -56,46 +57,46 @@ button {
 }
 
 .instructions {
-    font-size: 0.75rem;
-    border-radius: 0.5rem;
-    background: #000;
-    color: #fff;
-    padding: 0.25rem;
-    position: relative;
-    bottom: -10px;
+  font-size: 0.75rem;
+  border-radius: 0.5rem;
+  background: #000;
+  color: #fff;
+  padding: 0.25rem;
+  position: relative;
+  bottom: -10px;
 }
 
 .instructions > svg {
-    margin-right: 0.25rem;
+  margin-right: 0.25rem;
 }
 
 .offscreen {
-    position: absolute;
-    left: -9999px;
+  position: absolute;
+  left: -9999px;
 }
 
 .hide {
-    display: none;
+  display: none;
 }
 
 .valid {
-    color: limegreen;
-    margin-left: 0.25rem;
+  color: limegreen;
+  margin-left: 0.25rem;
 }
 
 .invalid {
-    color: red;
-    margin-left: 0.25rem;
+  color: red;
+  margin-left: 0.25rem;
 }
 
 .errmsg {
-    background-color: lightpink;
-    color: firebrick;
-    font-weight: bold;
-    padding: 0.5rem;
-    margin-bottom: 0.5rem;
+  background-color: lightpink;
+  color: firebrick;
+  font-weight: bold;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .line {
-    display: inline-block;
+  display: inline-block;
 }

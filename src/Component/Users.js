@@ -3,48 +3,50 @@ import useAxiosPrivate from "../Hooks/useAxiosPrivate";
 import { useNavigate, useLocation } from "react-router-dom";
 
 const Users = () => {
-    const [ users, setUsers ] = useState();
-    const axiosPrivate = useAxiosPrivate();
-    const navigate = useNavigate();
-    const location = useLocation();
+  const [users, setUsers] = useState();
+  const axiosPrivate = useAxiosPrivate();
+  const navigate = useNavigate();
+  const location = useLocation();
 
-    useEffect(() => {
-        let isMounted = true;
-        const controller = new AbortController();
-        
-        const getUsers = async () => {
-            try{
-                const response = await axiosPrivate.get('/users', {
-                    signal: controller.signal
-                });
-                console.log(response.data);
-                isMounted && setUsers(response.data)
-            }catch(err){
-                console.error(err);
-                navigate('/login', { state: { from: location }, replace: true });
-            }
-        }
+  useEffect(() => {
+    let isMounted = true;
+    const controller = new AbortController();
 
-        getUsers();
+    const getUsers = async () => {
+      try {
+        const response = await axiosPrivate.get("/users", {
+          signal: controller.signal,
+        });
+        console.log(response.data);
+        isMounted && setUsers(response.data);
+      } catch (err) {
+        console.error(err);
+        navigate("/login", { state: { from: location }, replace: true });
+      }
+    };
 
-        return () => {
-            isMounted = false;
-            controller.abort();
-        }
-    },[])
+    getUsers();
+
+    return () => {
+      isMounted = false;
+      controller.abort();
+    };
+  }, []);
 
   return (
     <article>
       <h2>Users Lists</h2>
-      {users?.length
-      ? (
+      {users?.length ? (
         <ul>
-            {users.map((user, i) => <li key={i}>{user?.username}</li>)}
+          {users.map((user, i) => (
+            <li key={i}>{user?.username}</li>
+          ))}
         </ul>
-      ) : <p>No user to display</p>
-    }
+      ) : (
+        <p>No user to display</p>
+      )}
     </article>
   );
 };
 
-export default Users
+export default Users;

@@ -13,10 +13,10 @@ import Missing from "./Component/Missing.js";
 import RequireAuth from "./Component/RequireAuth.js";
 
 const ROLES = {
-  'User': 2001,
-  'Editor': 1984,
-  'Admin': 5150
-}
+  User: 2001,
+  Editor: 1984,
+  Admin: 5150,
+};
 
 function App() {
   return (
@@ -30,19 +30,21 @@ function App() {
           <Route path="unauthorized" element={<Unauthorized />} />
 
           {/* protected routes */}
-          <Route element={<RequireAuth allowedRoles={[ROLES.User]}/>}>
+          <Route element={<RequireAuth allowedRoles={[ROLES.User]} />}>
             <Route path="/" element={<Home />} />
           </Route>
 
-          <Route element={<RequireAuth allowedRoles={[ROLES.Editor]}/>}>
+          <Route element={<RequireAuth allowedRoles={[ROLES.Editor]} />}>
             <Route path="editor" element={<Editor />} />
           </Route>
 
-          <Route element={<RequireAuth allowedRoles={[ROLES.Admin]}/>}>
+          <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
             <Route path="admin" element={<Admin />} />
           </Route>
 
-          <Route element={<RequireAuth allowedRoles={[ROLES.Editor, ROLES.Admin]}/>}>
+          <Route
+            element={<RequireAuth allowedRoles={[ROLES.Editor, ROLES.Admin]} />}
+          >
             <Route path="lounge" element={<Lounge />} />
           </Route>
 

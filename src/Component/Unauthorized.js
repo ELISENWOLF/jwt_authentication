@@ -1,9 +1,8 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
-import './main.css'
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import "./main.css";
 
 const Unauthorized = () => {
-
   const navigate = useNavigate();
 
   const goBack = () => navigate(-1);
@@ -11,13 +10,13 @@ const Unauthorized = () => {
   return (
     <div className="main_container">
       <h1>Unauthorized</h1>
-            <br />
-            <p>You do not have access to the requested page.</p>
-            <div className="flexGrow">
-                <button onClick={goBack}>Go Back</button>
-            </div>
+      <br />
+      <p>You do not have access to the requested page.</p>
+      <div className="flexGrow">
+        <button onClick={goBack}>Go Back</button>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Unauthorized
+export default Unauthorized;
