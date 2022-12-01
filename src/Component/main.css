@@ -100,3 +100,19 @@ button {
 .line {
   display: inline-block;
 }
+
+.persistCheck {
+  font-size: 0.75rem;
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+.persistCheck label {
+  margin: 0;
+}
+
+li{
+  list-style-type: none;
+}

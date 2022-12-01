@@ -1,16 +1,15 @@
-import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import AuthContext from "./Context/AuthProvider";
+import useLogout from "../Hooks/useLogout";
 import "./main.css";
 
 const Home = () => {
-  const { setAuth } = useContext(AuthContext);
   const navigate = useNavigate();
+  const logout = useLogout();
 
-  const logout = async () => {
-    setAuth({});
+  const signOut = async () => {
+    await logout();
     navigate("/linkpage");
-  };
+  }
 
   return (
     <div className="main_container">
@@ -26,7 +25,7 @@ const Home = () => {
       <br />
       <Link to="/linkpage">Go to the link page</Link>
       <br />
-      <button onClick={logout}>Sign Out</button>
+      <button onClick={signOut}>Sign Out</button>
     </div>
   );
 };
